@@ -1,0 +1,47 @@
+var membersJson = [{
+	"memberId": 0,
+	"name": "",
+	"nickname": "",
+	"picUrl": "",
+	"gender": "",
+	"interests": "",
+	"slogan": ""
+},{
+	"memberId": 1,
+	"name": "Max Muster",
+	"nickname": "Maxi",
+	"picUrl": "figur1.jpg",
+	"age": 35,
+	"gender": "",
+	"interests": "",
+	"slogan": "Mein schlauer Spruch"
+},{
+	"memberId": 2,
+	"name": "Sandra Bauer",
+	"nickname": "Sora",
+	"picUrl": "figur2.jpg",
+	"age": 27,
+	"gender": "",
+	"interests": "",
+	"slogan": "Mein schlauer Spruch"
+},{
+	"memberId": 3,
+	"name": "",
+	"nickname": "Wolfi",
+	"picUrl": "figur1.jpg",
+	"age": 35,
+	"gender": "",
+	"interests": "",
+	"slogan": "Mein schlauer Spruch, der etwas länger ist"
+},{
+	"memberId": 4,
+	"name": "",
+	"nickname": "Jessi",
+	"picUrl": "figur2.jpg",
+	"age": 26,
+	"gender": "",
+	"interests": "laber",
+	"slogan": "Mein schlauer Spruch"
+},
+
+]
