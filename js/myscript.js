@@ -1,15 +1,15 @@
 var imgPath = "img/";
 var linkData = [["dates","contact","about","settings"],["#","#","#","#"]];
 
-// var members = JSON.parse(localStorage.getItem("members"));
-// if (members == "" || members == null){
+var members = JSON.parse(localStorage.getItem("members"));
+if (members == "" || members == null){
 	members = JSON.stringify(membersJson);
 	members = JSON.parse(members);
 	for (let person of members) {
 		person.loveStatus = 0;
 		person.loveCounter = 0;
 	}
-// };
+};
 members.splice(0,1);
 
 siteBuilder();
@@ -49,13 +49,11 @@ function siteBuilder(){
 			</div>
 			<div id="overView" class="row"></div>
 		`)
-	//***********test**************
+
 	$(".dropdown-item").on("click",function(e){
 		candidateSort($(this).attr("name"));
 		console.log($(this).attr("name"));
 	})
-	
-	//******************************
 
 	for(let i=0;i<members.length;i++){
 		overviewCardBuilder(i);
@@ -98,8 +96,6 @@ function overviewCardBuilder(i){
 					</div>
 				</div>
 			`);	
-
-
 }
 //---------------------------------------End Overview Card Builder-------------------------------------------
 
@@ -199,5 +195,12 @@ function candidateSort(searchPara){
 		var tempId = Number((e.target.id).slice(6));
 		hearting(tempId);
 	});
+
+	$("#favorites").empty();
+	for(let person of members){
+		if(person.loveStatus == 1){
+			favCardBuilder(person);
+		};
+	};
 };
 //------------------Sort Candidates------------------------------------------------------------------------
