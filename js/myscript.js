@@ -12,7 +12,7 @@ var linkData = [["dates","contact","about","settings"],["#","#","#","#"]];
 // };
 members.splice(0,1);
 
-$(window).on('load', function() {siteBuilder()});
+siteBuilder();
 
 //-------------------------------------------Site Builder---------------------------------------------------
 function siteBuilder(){
