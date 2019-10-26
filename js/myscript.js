@@ -9,8 +9,8 @@ if (members == "" || members == null){
 		person.loveStatus = 0;
 		person.loveCounter = 0;
 	}
+	members.splice(0,1);
 };
-members.splice(0,1);
 
 siteBuilder();
 

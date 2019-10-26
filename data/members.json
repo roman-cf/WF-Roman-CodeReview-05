@@ -42,8 +42,7 @@ var membersJson = [{
 	"gender": "",
 	"interests": "laber",
 	"slogan": "Mein schlauer Spruch"
-},
-{
+},{
 	"memberId": 5,
 	"name": "Jessica Schwarz",
 	"nickname": "Jess",
