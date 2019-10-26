@@ -43,5 +43,17 @@ var membersJson = [{
 	"interests": "laber",
 	"slogan": "Mein schlauer Spruch"
 },
-
+{
+	"memberId": 5,
+	"name": "Jessica Schwarz",
+	"nickname": "Jess",
+	"picUrl": "w620_h465_x310_y232_210640b847aa6e15.jpg",
+	"age": 36,
+	"gender": "female",
+	"interests": "laber",
+	"slogan": "Mein schlauer Spruch"
+},
 ]
+
+
+
