@@ -12,10 +12,7 @@ var linkData = [["dates","contact","about","settings"],["#","#","#","#"]];
 // };
 members.splice(0,1);
 
-$(window).on('load', function() {
-    console.log("Alle geladen")
-    siteBuilder()
-})
+$(window).on('load', function() {siteBuilder()});
 
 //-------------------------------------------Site Builder---------------------------------------------------
 function siteBuilder(){
@@ -45,26 +42,19 @@ function siteBuilder(){
 				    	sort candidates by ...
 					</button>
 					<div class="dropdown-menu">
-				    	<p id="drpdwn1" class="dropdown-item h4" href="#">age</p>
-				    	<p id="drpdwn2" class="dropdown-item h4" href="#">loves</p>
-				    	<p class="dropdown-item h4" href="#">....</p>
+				    	<p class="dropdown-item h4" name="age">age</p>
+				    	<p class="dropdown-item h4" name="loveCounter">loves</p>
 					</div>
 				</div>  		
 			</div>
 			<div id="overView" class="row"></div>
 		`)
 	//***********test**************
-	$("#drpdwn1").on("click",function(e){
-		test1("age");
-		// var testObj = numberSort();
-		// console.log(testObj);
+	$(".dropdown-item").on("click",function(e){
+		candidateSort($(this).attr("name"));
+		console.log($(this).attr("name"));
 	})
-	$("#drpdwn2").on("click",function(e){
-		test1("loveCounter");
-		// var testObj = numberSort();
-		// console.log(testObj);
-	})
-
+	
 	//******************************
 
 	for(let i=0;i<members.length;i++){
@@ -108,6 +98,8 @@ function overviewCardBuilder(i){
 					</div>
 				</div>
 			`);	
+
+
 }
 //---------------------------------------End Overview Card Builder-------------------------------------------
 
@@ -148,7 +140,7 @@ $(".dateBtn").on("click", function(e){
 
 //-------------------------------------EventHandler of Like Button-----------------------------------------
 function hearting(tempId){
-
+console.log("e click")
 	for(let person of members){	
 
 		if (person.memberId == tempId){
@@ -194,19 +186,8 @@ function numberSort(wert){
 }
 //------------------End----Number Sort Function------------------------------------------------------------
 
-//------------------Find Position in Obj which have a special Value for specific key-----------------------
-function positionFinder(obj, attr, value) {
-    for(var i = 0; i < obj.length; i ++) {
-        if(obj[i][attr] === value) {
-            return i;
-        }
-    }
-    return -1;
-}
-//--------------------------End Find Position-----------------------------------------------------
-
 //------------------Sort Candidates------------------------------------------------------------------------
-function test1(searchPara){
+function candidateSort(searchPara){
 	$("#overView").empty();
 
 	numberSort(searchPara);

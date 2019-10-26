@@ -52,7 +52,79 @@ var membersJson = [{
 	"gender": "female",
 	"interests": "laber",
 	"slogan": "Mein schlauer Spruch"
-},
+},{
+	"memberId": 6,
+	"name": "Moritz Bleibtreu",
+	"nickname": "",
+	"picUrl": "image-1350268-860_poster_16x9-sncb-1350268.jpg",
+	"age": 48,
+	"gender": "male",
+	"interests": "Schauspieler",
+	"slogan": "Internet abschaffen"
+},{
+	"memberId": 7,
+	"name": "Matthias Schweighöfer",
+	"nickname": "",
+	"picUrl": "Matthias_SchweighöferParty_2019.jpg",
+	"age": 38,
+	"gender": "male",
+	"interests": "Schauspieler",
+	"slogan": "Du darfst auch mal off sein"
+},{
+	"memberId": 8,
+	"name": "Christoph Waltz",
+	"nickname": "",
+	"picUrl": "christoph-waltz.jpg",
+	"age": 63,
+	"gender": "male",
+	"interests": "Schauspieler",
+	"slogan": "Die Karriere in Hollywood und gar der Oscar haben nichts mit Verdienst zu tun. Das sind Glücksfälle."
+},{
+	"memberId": 9,
+	"name": "Paris Jackson",
+	"nickname": "",
+	"picUrl": "Paris-Jackson-startet-als-Schauspielerin-durch_master_reference.jpg",
+	"age": 21,
+	"gender": "female",
+	"interests": "music",
+	"slogan": "music rules"
+},{
+	"memberId": 10,
+	"name": "Christine Neubauer",
+	"nickname": "",
+	"picUrl": "1_christine_neubauer_ard_388.jpg",
+	"age": 57,
+	"gender": "female",
+	"interests": "",
+	"slogan": " Vom Flop zur Top-Quote"
+},{
+	"memberId": 11,
+	"name": "Ina Rudolph",
+	"nickname": "",
+	"picUrl": "Ina-Rudolph-xxl-800px-×-800px.png",
+	"age": 50,
+	"gender": "female",
+	"interests": "Schauspieler",
+	"slogan": "gehe ich meinen Weg, der zu mir passt"
+},{
+	"memberId": 12,
+	"name": "Nora Tschirner",
+	"nickname": "",
+	"picUrl": "nora_tschirner_stadtlandmama.jpg",
+	"age": 38,
+	"gender": "female",
+	"interests": "Schauspieler",
+	"slogan": "Ich habe den Verdacht, dass ich von Hunden abstamme. Das mag ein wenig entrückt klingen, aber wenn ein Hund im Korb liegt, würde ein normaler Mensch denken: 'Oh wie süß!' Ich aber denke: 'Boah, der hat einen Korb und ich nicht!"
+},{
+	"memberId": 13,
+	"name": "Jan Josef Liefers",
+	"nickname": "",
+	"picUrl": "Medien-Da-scheiden-sich-die-Geister-Sieht-Jan-Josef-Liefers-besser-mit-oder-ohne-Bart-aus-.jpg",
+	"age": 55,
+	"gender": "male",
+	"interests": "Schauspieler",
+	"slogan": "Es gibt zwischen Menschen niemals nur eine Wahrheit"
+}
 ]
 
 
