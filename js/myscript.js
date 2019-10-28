@@ -23,7 +23,7 @@ function siteBuilder(){
 						<nav class=" navbar navbar-expand-md p-2 justify-content-end">
 							<button class="navbar-toggler first-button" type="button" data-toggle="collapse" data-target="#navbarContent"
 							    aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-								<span class="navbar-toggler-icon text-white"></span>
+								<span class="navbar-toggler-icon text-white" >&#8801;</span>
 							</button>
 							<div class="collapse navbar-collapse "  id="navbarContent">
 								<ul class="navbar-nav justify-content-end">
