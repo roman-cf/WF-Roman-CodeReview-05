@@ -19,9 +19,16 @@ function siteBuilder(){
 	$("body").append(`
 					<header id="header" class="d-flex justify-content-between text-white  bg-info p-2 border-bottom-primary ">
 						<p class="h2 m-1">Dating</p>
-						<nav class=" navbar-collapse p-2">
-							<ul class="nav justify-content-end">
-							</ul>
+
+						<nav class=" navbar navbar-expand-md p-2 justify-content-end">
+							<button class="navbar-toggler first-button" type="button" data-toggle="collapse" data-target="#navbarContent"
+							    aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+								<span class="navbar-toggler-icon text-white"></span>
+							</button>
+							<div class="collapse navbar-collapse "  id="navbarContent">
+								<ul class="navbar-nav justify-content-end">
+								</ul>
+							</div>
 						</nav>	
 					</header>
 		`);
@@ -30,7 +37,7 @@ function siteBuilder(){
 
 	for(let i=0;i<linkData[0].length;i++){
 		$("nav ul").append(`
-						<li class="nav-item"><a class="nav-link text-white" href="${linkData[1][i]}">${linkData[0][i]}</a></li>
+						<li class="nav-item"><a class="nav-link text-white h4" href="${linkData[1][i]}">${linkData[0][i]}</a></li>
 		`)
 	}
 
@@ -81,8 +88,8 @@ function overviewCardBuilder(i){
 	if(members[i].loveStatus == 1){Farbe = "-danger"}else{Farbe = "-info"};
 		$("#overView").append(`
 				<div id="card${members[i].memberId}" class="col-lg-3 col-md-6 col-sm-12 mb-3">
-					<div class="card h-100 bg-secondary"   >
-						<img class="card-img-top" src="${imgPath+members[i].picUrl}" alt="Card image"></a>
+					<div class="card h-100 bg-secondary">
+						<img class="card-img-top 5" src="${imgPath+members[i].picUrl}" alt="Card image"></a>
 						<div class="card-img-overlay offset-md-8 offset-lg-8">
 					 		<p id="${'member'+members[i].memberId}" class=" dateBtn btn btn${Farbe} ">&hearts;</p>
 					 	</div>
