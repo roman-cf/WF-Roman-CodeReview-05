@@ -1,5 +1,8 @@
 var imgPath = "img/";
 var linkData = [["dates","contact","about","settings"],["#","#","#","#"]];
+// var searchData =[["age","loves"],["age","loveCounter"]];
+var gender = ["male","female",""];
+var mlName;
 
 var members = JSON.parse(localStorage.getItem("members"));
 if (members == "" || members == null){
@@ -16,12 +19,12 @@ siteBuilder();
 
 //-------------------------------------------Site Builder---------------------------------------------------
 function siteBuilder(){
+	$("title").text("Dating");
 	$("body").append(`
-					<header id="header" class="d-flex justify-content-between text-white  bg-info p-2 border-bottom-primary ">
+					<header id="header" class=" d-flex justify-content-between text-white  bg-info p-2 border-bottom-primary">
 						<p class="h2 m-1">Dating</p>
-
 						<nav class=" navbar navbar-expand-md p-2 justify-content-end">
-							<button class="navbar-toggler first-button" type="button" data-toggle="collapse" data-target="#navbarContent"
+							<button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse" data-target="#navbarContent"
 							    aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
 								<span class="navbar-toggler-icon text-white" >&#8801;</span>
 							</button>
@@ -35,6 +38,8 @@ function siteBuilder(){
 	$("body").append(`<main><div id="maincontent" class="container"></div></main>`);
 	$("body").append(`<footer>&copy;</footer>`);
 
+
+
 	for(let i=0;i<linkData[0].length;i++){
 		$("nav ul").append(`
 						<li class="nav-item"><a class="nav-link text-white h4" href="${linkData[1][i]}">${linkData[0][i]}</a></li>
@@ -42,9 +47,27 @@ function siteBuilder(){
 	}
 
 	$("#maincontent").append(`
-			<div class="row mx-auto d-flex justify-content-between my-4 p-2">
-				<h3 class=" col-lg-6 col-md-2 dropdown col-6">Candidates</h3>	  
-				<div class="dropdown col-lg-2 dropdown col-6 col-md-6">
+			<div class="row mx-auto d-flex  my-4 p-2 bg-light sticky-top">
+				
+				<h3 class="col-lg-4 col-md-4 col-12">Candidates</h3>
+				
+				<div class="col-lg-4 col-md-4 col-12 mt-2 mb-2 d-flex">			
+
+					<div class="custom-control custom-checkbox">
+						<input checked type="checkbox" class="custom-control-input checkItem" id="check0">
+						<label class="custom-control-label mr-2" for="check0">male</label>
+					</div>	
+					<div class="custom-control custom-checkbox">
+						<input checked type="checkbox" class="custom-control-input checkItem" id="check1">
+						<label class="custom-control-label mr-2" for="check1">female</label>
+					</div>						
+					<div class="custom-control custom-checkbox">
+						<input checked type="checkbox" class="custom-control-input checkItem" id="check2">
+						<label class="custom-control-label mr-2" for="check2">other</label>
+					</div>	
+				</div>
+				
+				<div class="dropdown col-lg-4 col-md-4 col-12">
 					<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
 				    	sort candidates by ...
 					</button>
@@ -53,17 +76,21 @@ function siteBuilder(){
 				    	<p class="dropdown-item h4" name="loveCounter">loves</p>
 					</div>
 				</div>  		
+			
 			</div>
+
 			<div id="overView" class="row"></div>
 		`)
+	$(".checkItem").on("change",function(e){
+		genderSelect($(this).attr("id"));
+	})
 
 	$(".dropdown-item").on("click",function(e){
 		candidateSort($(this).attr("name"));
-		console.log($(this).attr("name"));
 	})
 
-	for(let i=0;i<members.length;i++){
-		overviewCardBuilder(i);
+	for(let person of members){
+		overviewCardBuilder(person);
 	};	
 
 	$("main").append(`	<div class="bg-info text-white">
@@ -77,33 +104,42 @@ function siteBuilder(){
 	for(let person of members){
 		if(person.loveStatus == 1){
 			favCardBuilder(person);
-			};	};
-
+			};
+	};
 };
+displayDialogbox();
 //---------------------------------------End Site Builder---------------------------------------------------
 
 //---------------------------------------Overview Card Builder----------------------------------------------
-function overviewCardBuilder(i){
+function overviewCardBuilder(person){
 	let Farbe = "";
-	if(members[i].loveStatus == 1){Farbe = "-danger"}else{Farbe = "-info"};
+	let bgFarbe = "bg-secondary"; 
+
+	if(person.loveStatus == 1){Farbe = "-danger"}else{Farbe = "-info"};
+
 		$("#overView").append(`
-				<div id="card${members[i].memberId}" class="col-lg-3 col-md-6 col-sm-12 mb-3">
-					<div class="card h-100 bg-secondary">
-						<img class="card-img-top 5" src="${imgPath+members[i].picUrl}" alt="Card image"></a>
+				<div id="card${person.memberId}" class="col-lg-3 col-md-6 col-sm-12 mb-3">
+					<div class="card h-100 ${bgFarbe}">
+						<img class="card-img-top"  src="${imgPath+person.picUrl}" alt="Card image"></a>
 						<div class="card-img-overlay offset-md-8 offset-lg-8">
-					 		<p id="${'member'+members[i].memberId}" class=" dateBtn btn btn${Farbe} ">&hearts;</p>
+					 		<p id="${'member'+person.memberId}" class=" dateBtn btn btn${Farbe} " >&hearts; </p>
 					 	</div>
-					 	<div class="card-body text-white">
-					    	<h4 class="card-title">${members[i].nickname}</h4>
-					    	<p class="card-text">${members[i].slogan}</p>
+					 	<div class="card-body text-white d-flex flex-column">
+					    	<h4 class="card-title">${person.nickname}</h4>
+					    	<p class="card-text mt-auto">${person.slogan}</p>
 					 	</div>
 						<div class="progress bg-secondary">
-    						<div class="progress-bar bg${Farbe}" style="width:${members[i].loveCounter}px">${members[i].loveCounter}</div>
+    						<div class="progress-bar bg${Farbe}" style="width:${person.loveCounter}px">${person.loveCounter}</div>
 						</div>
 					</div>
 				</div>
 			`);	
-}
+			//add eventhandler
+			$("#card"+person.memberId).on("click", function(e){
+				var tempId = Number((e.target.id).slice(6));
+				hearting(tempId);
+			});
+};
 //---------------------------------------End Overview Card Builder-------------------------------------------
 
 //---------------------------------------Favorits Card Builder----------------------------------------------
@@ -134,16 +170,9 @@ function favCardBuilder(person){
 }
 //---------------------------------------End cards Favorits Builder-------------------------------------------
 
-//--------------------------------EventHandler HeartButton ------------------------------------------------
-$(".dateBtn").on("click", function(e){
-	var tempId = Number((e.target.id).slice(6));
-	hearting(tempId);
-});
-//---------------------------------------End of EventHandler-----------------------------------------------
-
 //-------------------------------------EventHandler of Like Button-----------------------------------------
 function hearting(tempId){
-console.log("e click")
+
 	for(let person of members){	
 
 		if (person.memberId == tempId){
@@ -153,20 +182,20 @@ console.log("e click")
 				person.loveStatus=1;
 				person.loveCounter++;
 				let progress = person.loveCounter;
+				mlName = person.name;
+				console.log(mlName);
 				$("#card"+tempId+" .progress-bar").css("width", progress).text(progress).removeClass("bg-info").addClass("bg-danger");		
-				$("#member"+tempId).removeClass("btn-info");
-				$("#member"+tempId).addClass("btn-danger");
-
+				$("#member"+tempId).removeClass("btn-info").addClass("btn-danger");
 				favCardBuilder(person);
 				store();
+				$("#myModal").modal("show");
+				$(".modal-body p").text(person.name);
 
 			}else{
 
 				person.loveStatus=0;
 				$("#card"+tempId+" .progress-bar").removeClass("bg-danger").addClass("bg-info");		
-				$("#member"+tempId).removeClass("btn-danger");
-				$("#member"+tempId).addClass("btn-info");
-				$("#favCard"+tempId).unbind()
+				$("#member"+tempId).removeClass("btn-danger").addClass("btn-info");
 				$("#favCard"+tempId).remove();
 				store();
 			}
@@ -195,8 +224,8 @@ function candidateSort(searchPara){
 
 	numberSort(searchPara);
 
-	for(let i=0;i<members.length;i++){
-		overviewCardBuilder(i);
+	for(let person of members){
+		overviewCardBuilder(person);
 	};
 	$(".dateBtn").on("click", function(e){
 		var tempId = Number((e.target.id).slice(6));
@@ -210,4 +239,51 @@ function candidateSort(searchPara){
 		};
 	};
 };
-//------------------Sort Candidates------------------------------------------------------------------------
+//------------End---Sort Candidates------------------------------------------------------------------------
+
+//------------------change genderSelect--------------------------------------------------------------------
+function genderSelect(e){
+	var checkId = e.slice(5);
+	var genderValue = gender[checkId];
+	if ($('#'+e).is(":checked")==false){
+
+		for(let person of members){
+			if(person.gender == genderValue){
+				let tempId = person.memberId;
+				$("#card"+tempId).remove();
+			}
+		}	
+	}else{
+		for(let person of members){
+			if(person.gender == genderValue){
+				overviewCardBuilder(person);
+			}
+		}
+	}
+}
+//-------------End--change genderSelect--------------------------------------------------------------------
+
+//----------------------Modal-model----------------------------------------------------------------
+function displayDialogbox(){
+ $("body").append(` 
+				  <div class="modal fade" id="myModal" role="dialog">
+				    <div class="modal-dialog modal-sm">
+				      <div class="modal-content">
+				        <div class="modal-header">
+				          <h4 class="modal-title">add to favorites</h4>
+				          <button type="button" class="close" data-dismiss="modal">&times;</button>
+				        </div>
+				        <div class="modal-body">
+				          <p></p>
+				        </div>
+				        <div class="modal-footer">
+				          <button type="button" class="btn btn-info" data-dismiss="modal">ok</button>
+				        </div>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+				`);
+
+$("#myodal button").on("click",function(){$("#myModal").modal("hide")})
+};

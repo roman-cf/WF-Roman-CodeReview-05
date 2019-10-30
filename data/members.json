@@ -3,6 +3,7 @@ var membersJson = [{
 	"name": "",
 	"nickname": "",
 	"picUrl": "",
+	"age": "",
 	"gender": "",
 	"interests": "",
 	"slogan": ""
@@ -113,7 +114,7 @@ var membersJson = [{
 	"age": 38,
 	"gender": "female",
 	"interests": "Schauspieler",
-	"slogan": "Ich habe den Verdacht, dass ich von Hunden abstamme. Das mag ein wenig entrückt klingen, aber wenn ein Hund im Korb liegt, würde ein normaler Mensch denken: 'Oh wie süß!' Ich aber denke: 'Boah, der hat einen Korb und ich nicht!"
+	"slogan": "Ich habe den Verdacht, dass ich von Hunden abstamme. Wenn ein Hund im Korb liegt, denken alle: 'Oh wie süß!' Ich: 'Boah, der hat einen Korb und ich nicht!"
 },{
 	"memberId": 13,
 	"name": "Jan Josef Liefers",
